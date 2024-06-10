@@ -57,11 +57,11 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-TPPOGGTD.js";
+} from "./chunk-CHRFX2HE.js";
 import {
   __spreadProps,
   __spreadValues
-} from "./chunk-SXIXOCJ4.js";
+} from "./chunk-R7GQRDZ6.js";
 
 // node_modules/@angular/common/fesm2022/common.mjs
 var _DOM = null;
@@ -3716,7 +3716,7 @@ function isPlatformWorkerApp(platformId) {
 function isPlatformWorkerUi(platformId) {
   return platformId === PLATFORM_WORKER_UI_ID;
 }
-var VERSION = new Version("17.3.9");
+var VERSION = new Version("17.3.11");
 var _ViewportScroller = class _ViewportScroller {
 };
 _ViewportScroller.ɵprov = ɵɵdefineInjectable({
@@ -5026,9 +5026,9 @@ export {
 
 @angular/common/fesm2022/common.mjs:
   (**
-   * @license Angular v17.3.9
+   * @license Angular v17.3.11
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-3BCMBD5X.js.map
+//# sourceMappingURL=chunk-V4I6KYGB.js.map
