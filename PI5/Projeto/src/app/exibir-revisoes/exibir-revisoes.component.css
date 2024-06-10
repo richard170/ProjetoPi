@@ -1,0 +1,303 @@
+/* Estilos para desktop (largura maior que 768px) */
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.iconeVoltar {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  width: 40%;
+}
+
+.title {
+  background-color: #000080;
+  color: #ffffff;
+  width: 50vh;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 80%;
+  margin: 10px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.info-column {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-column p {
+  margin: 10px 0;
+}
+
+.info-column textarea {
+  width: 100%;
+  height: 100px; /* Altura maior */
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions button {
+  width: 120px;
+  height: 60px;
+  background-color: #000080;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.actions select {
+  width: 150px;
+  height: 60px;
+  background-color: #000080;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.actions button:hover {
+  opacity: 0.7;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  border: 3px solid #000080;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+img:hover {
+  opacity: 0.7;
+}
+
+.custom-select {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(0, 124, 173);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-select option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(14, 0, 141);
+}
+
+
+
+
+
+
+
+
+/* Defina uma lista de cores claras */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 80%;
+  margin: 10px;
+  transition: background-color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.light-yellow {
+  background-color: #6bb68d;
+}
+
+.light-blue {
+  background-color: #bbdefb;
+}
+
+.light-green {
+  background-color: #fcfa9d;
+}
+
+.light-pink {
+  background-color: #d4b9ff;
+}
+
+.light-purple {
+  background-color: #ffd08b;
+}
+
+.light-purple1 {
+  background-color: #7192ff;
+}
+
+.light-purple2 {
+  background-color: #e694ff;
+}
+
+.light-purple3 {
+  background-color: #84fdf3;
+}
+
+.light-purple4 {
+  background-color: #fc8383;
+}
+
+.light-purple5 {
+  background-color: #e8ff81;
+}
+
+.light-purple6 {
+  background-color: #ff81d5;
+}
+
+.light-purple7 {
+  background-color: #81ffb1;
+}
+
+.light-purple8 {
+  background-color: #81f0ff;
+}
+
+.light-purple9 {
+  background-color: #ad81ff;
+}
+
+
+.light-purple10 {
+  background-color: #8cff81;
+}
+
+
+.light-purple11 {
+  background-color: #8194ff;
+}
+
+
+.light-purple12 {
+  background-color: #e7e7e7;
+}
+
+
+.light-purple13 {
+  background-color: #ffffff;
+}
+
+.light-purple14 {
+  background-color: #ffe1b5;
+}
+
+
+.light-purple15 {
+  background-color: #5162ff;
+}
+
+
+
+
+
+
+
+/* Estilos para dispositivos móveis (largura até 768px) */
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 10px;
+  }
+
+  .iconeVoltar {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .iconeVoltar img {
+    margin-bottom: 10px;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .info-column {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions button,
+  .actions select {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+}

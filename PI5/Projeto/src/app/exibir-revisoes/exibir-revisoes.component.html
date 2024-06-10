@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veículos</title>
+  <link rel="stylesheet" href="exibir-revisoes.component.css">
+</head>
+<body>
+  <div class="main">
+    <div class="iconeVoltar">
+      <img (click)="entrarPrincipal()" src="assets/voltarBtn.png" alt="Voltar">
+      <h1 class="title">VEÍCULOS</h1>
+    </div>
+
+    <div class="card-container" *ngFor="let placa of listaPlacas">
+      <div style="width: 90%; border-radius: 10px; margin: 10px;" lass="card" [ngClass]="cardColorMap[placa]">
+        <div class="card-body">
+          <!-- Informações do veículo -->
+          <div class="info-column">
+            <p><strong>Placa:</strong> {{ placa }}</p>
+            <p><strong>Tipo Revisão:</strong> {{ revisoesDetalhadas[placa]?.tipoRevisao || 'Não encontrado' }}</p>
+            <p><strong>Detalhes Revisão:</strong> {{ revisoesDetalhadas[placa]?.detalhesRevisao || 'Não encontrado' }}</p>
+            <textarea style="border-radius: 5px;" [ngModel]="revisoesDetalhadas[placa]?.orcamento" (ngModelChange)="updateOrcamento($event, placa)" placeholder="Orçamento"></textarea>
+            <div class="button-container">
+              <button (click)="salvarOrcamento(placa, revisoesDetalhadas[placa]?.orcamento)">Salvar</button>
+            </div>
+          </div>
+
+          <!-- Informações do cliente -->
+          <div class="info-column">
+            <p><strong>Nome Cliente:</strong> {{ revisoesDetalhadas[placa]?.nomeCliente || 'Não encontrado' }}</p>
+            <p><strong>CPF Cliente:</strong> {{ revisoesDetalhadas[placa]?.cpfCliente || 'Não encontrado' }}</p>
+            <p><strong>Telefone Cliente:</strong> {{ revisoesDetalhadas[placa]?.telefoneCliente || 'Não encontrado' }}</p>
+            <p><strong>Email Cliente:</strong> {{ revisoesDetalhadas[placa]?.emailCliente || 'Não encontrado' }}</p>
+          </div>
+
+          <!-- Informações do veículo -->
+          <div class="info-column">
+            <p><strong>Marca Veículo:</strong> {{ revisoesDetalhadas[placa]?.marcaVeiculo || 'Não encontrado' }}</p>
+            <p><strong>Modelo Veículo:</strong> {{ revisoesDetalhadas[placa]?.modeloVeiculo || 'Não encontrado' }}</p>
+            <p><strong>Ano Veículo:</strong> {{ revisoesDetalhadas[placa]?.anoVeiculo || 'Não encontrado' }}</p>
+          </div>
+
+          <!-- Ações -->
+          <div class="actions">
+            <select class="custom-select" (change)="enviarStatus(placa, $event)">
+              <option value="Aguardando">Aguardando</option>
+              <option value=" Andamento 🔧">Andamento</option>
+              <option value=" Concluido ✅">Concluído</option>
+            </select>
+            <button style="background-color: rgb(250, 0, 0);" (click)="concluirRevisao(placa)">CONCLUIR REVISÃO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
