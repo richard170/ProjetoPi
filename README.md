@@ -44,3 +44,14 @@ Siga os passos abaixo para configurar e executar o projeto:
 # 4. Requisitos Adicionais
   É necessário ter um banco de dados PostgreSQL instalado e configurado para o funcionamento correto do backend.
   Para mais informações, consulte a documentação do projeto ou entre em contato com o suporte técnico.
+
+# 5. Abrir projeto:
+
+    http://localhost:4200/tela-login
+  - usuario:
+    
+        123
+
+  - senha:
+    
+        123
