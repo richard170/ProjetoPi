@@ -1,118 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-:host {
-  font-family: 'Roboto', sans-serif;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
-
-.main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
+.formulario {
+  grid-template-columns: repeat(2, 1fr);
+  width: auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 3px solid #000080;
 }
 
-.formulario{
-    width: 60%;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    margin: auto;
-
+.formInput {
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .iconeVoltar {
-    width: 100%;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-
-img:hover{
-    opacity: 0.7;
-    }
-
-img{
-    width: 70px;
-    height: 70px;
-    margin: 5px;
-    border: 3px solid #000080;
-    border-radius: 5px;
-    cursor: pointer; /* Transforma o cursor em uma mãozinha */
+img:hover {
+  opacity: 0.7;
 }
 
-input::placeholder{
-    color: #a1a1a1;
+img {
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  padding: 5px;
+  border: 3px solid #000080;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-
-
-form{
-    width: 100%;
+input {
+  width: 80%; /* Faz com que os inputs ocupem toda a largura da coluna */
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 3px solid #000080;
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
 }
 
-
-input{
-    width: 80%;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid #a1a1a1;
-    font-size: 20px;
+h1 {
+  margin: 30px;
+  background-color: #000080;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 50vh;
+  height: auto;
+  padding: 15px;
+  font-size: 2em;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in the element's width and height */
 }
 
-h1{
-    margin: 30px;
-    background-color: #000080;
-    color: #ffffff;
-    border-radius: 10px;
-    width: 50vh;
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+button {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  margin: 20px;
+  padding: 15px 30px;
+  background-color: #28a745; /* Cor verde para avançar/progressão */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-button{
-    height: 7vh;
-    width: 15vh;
-    margin: 30px;
-    background-color: #006D5A;
-    color: #ffffff;
-    border-radius: 5px;
-}
-
-
 
 button:hover {
-    filter: brightness(60%); /* Reduz o brilho em 90% */
+  background-color: #218838; /* Cor mais escura para o hover */
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #1e7e34; /* Cor ainda mais escura para o active */
+  transform: translateY(0);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.4); /* Foco com sombra verde clara */
+}
+
+@media (max-width: 699px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinha o conteúdo no início da tela */
+    height: auto; /* Remove a altura fixa para que o conteúdo se ajuste dinamicamente */
   }
 
-  
-
-  @media (max-width: 699px) {
-
-    .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start; /* Alinha o conteúdo no início da tela */
-        height: auto; /* Remove a altura fixa para que o conteúdo se ajuste dinamicamente */
-      }
-
-    .formulario{
-        width: 100%;
-    }
-
-    .formulario h1{
-        width: 80%;
-    }
-
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+    border: 3px solid #000080;
+    border-radius: 5px;
+    cursor: pointer;
   }
+  h1 {
+    font-size: 1em;
+    padding: 10px;
+  }
+  .formulario {
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .formulario h1 {
+    width: 100%;
+    font-size: 1.5em;
+  }
+}

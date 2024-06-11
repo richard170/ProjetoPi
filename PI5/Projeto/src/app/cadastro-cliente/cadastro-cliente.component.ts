@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',
-  styleUrl: './cadastro-cliente.component.css'
+  styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent {
 
@@ -23,52 +22,29 @@ export class CadastroClienteComponent {
     uf: ''
   };
 
+  errorMessage: string = '';
 
-  constructor(private router: Router, private clienteService: ClienteService,
-    private http: HttpClient
-  ) {}
+  constructor(private router: Router, private clienteService: ClienteService, private http: HttpClient) {}
 
-
-
-  
-
-/*   cadastrarCliente() {
-    this.clienteService.cadastrarCliente(this.cliente)
-      .subscribe(
-        response => {
-          console.log('Usuário cadastrado com sucesso:', response);
-          alert('Usuário Cadastrado com sucesso.');
-        },
-        error => {
-          console.error('Erro ao cadastrar usuário:', error);
-        }
-      );
-    this.cliente = {
-        nome: '',
-        cpf: '',
-        telefone: '',
-        email: '',
-        cep: '',
-        logradouro: '',
-        bairro: '',
-        localidade: '',
-        uf: ''
-    };
-  } */
-
-
-  entrarPrincipal(): void {
-
-    this.router.navigate(['/tela-principal']);
-  }  
-
-  entrarCadEndereco(): void {
-    // Navegar para a próxima etapa passando os dados do cliente
-    this.router.navigate(['/cadastro-endereco'], { state: { cliente: this.cliente } });
+  validateCpf() {
+    if (this.cliente.cpf.length > 11) {
+      this.cliente.cpf = this.cliente.cpf.substring(0, 11);
+    }
   }
 
+  isFormValid(): boolean {
+    return this.cliente.nome !== '' && this.cliente.cpf.length === 11 && this.cliente.telefone !== '' && this.cliente.email !== '';
+  }
 
+  entrarPrincipal(): void {
+    this.router.navigate(['/tela-principal']);
+  }
+
+  entrarCadEndereco(): void {
+    if (this.isFormValid()) {
+      this.router.navigate(['/cadastro-endereco'], { state: { cliente: this.cliente } });
+    } else {
+      this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
+    }
+  }
 }
-
-
-

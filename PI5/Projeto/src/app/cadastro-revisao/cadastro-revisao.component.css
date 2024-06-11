@@ -1,171 +1,192 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
-.formulario{
-    width: 60%;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    margin: auto;
-
+.formulario {
+  width: 75%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  margin: auto;
+  width: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 3px solid #000080;
 }
 
 .iconeVoltar {
-    width: 100%;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .tipoRevisao {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
 }
 
 .tipoRevisao input {
-    width: 6vh;
-    height: 6vh;
-    display: flex;
-    margin: 30px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  margin: 30px;
 }
 
 .rev {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
 }
 
 .def {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .obs {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-
-img:hover{
-opacity: 0.7;
+img:hover {
+  opacity: 0.7;
 }
 
-textarea{
-    width: 80%; 
-    height: 30vh; 
-    border-radius: 3px;
-    background-color: rgb(236, 236, 236);
+textarea {
+  width: 80%;
+  height: 30vh;
+  border-radius: 3px;
+  background-color: rgb(236, 236, 236);
 }
-
 
 img {
-    cursor: pointer; /* Transforma o cursor em uma mãozinha */
-    width: 70px;
-    height: 70px;
-    margin: 5px;
-    border: 3px solid #000080;
-    border-radius: 5px;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  padding: 5px;
+  border: 3px solid #000080;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-input{
-    width: 80%;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid #a1a1a1;
-    font-size: 20px;
+input {
+  width: 90%;
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 227, 227);
 }
 
 h1 {
-    margin: 30px;
-    background-color: #000080;
-    color: #ffffff;
-    border-radius: 10px;
-    width: 55vh;
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+  margin: 30px;
+  background-color: #000080;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 50vh;
+  height: auto;
+  padding: 15px;
+  font-size: 2em;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in the element's width and height */
 }
 
 button {
-    height: 7vh;
-    width: 15vh;
-    margin: 15px;
-    background-color: #006D5A;
-    color: #ffffff;
-    border-radius: 10px;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  margin: 30px;
+  background-color: #28a745; /* Cor verde para avançar/progressão */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-
 
 button:hover {
-    filter: brightness(90%);
-    /* Reduz o brilho em 90% */
+  background-color: #218838; /* Cor mais escura para o hover */
+  transform: translateY(-2px);
 }
 
+button:active {
+  background-color: #1e7e34; /* Cor ainda mais escura para o active */
+  transform: translateY(0);
+}
 
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.4); /* Foco com sombra verde clara */
+}
 
 @media (min-width: 700px) {
-
-    button {
-        height: 15vh;
-        width: 15vh;
-        margin: 15px;
-        background-color: #006D5A;
-        color: #ffffff;
-        border-radius: 10px;
-    }
-
-    }
-
-
-
+  button {
+    height: 15vh;
+    width: 15vh;
+    margin: 15px;
+    background-color: #006d5a;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+}
 
 @media (max-width: 699px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Alinha o conteúdo no início da tela */
+    height: auto;
+    /* Remove a altura fixa para que o conteúdo se ajuste dinamicamente */
+  }
 
-    .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        /* Alinha o conteúdo no início da tela */
-        height: auto;
-        /* Remove a altura fixa para que o conteúdo se ajuste dinamicamente */
-    }
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+    border: 3px solid #000080;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-    .tipoRevisao{
+  h1 {
+    font-size: 1em;
+    padding: 10px;
+  }
 
-        display: flex;
-        justify-content: center;
+  .tipoRevisao {
+    display: flex;
+    justify-content: center;
+  }
 
-    }
+  .formulario {
+    width: 100%;
+  }
 
-    .formulario {
-        width: 100%;
-    }
-
-    .formulario h1 {
-        width: 80%;
-    }
-
+  .formulario h1 {
+    width: 80%;
+  }
 }

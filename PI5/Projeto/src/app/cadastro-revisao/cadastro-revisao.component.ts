@@ -14,7 +14,7 @@ export class CadastroRevisaoComponent {
     tipoRevisao: '',
     detalhesRevisao: '',
   };
-
+  errorMessage: string = '';
   constructor(
     private router: Router,
     private revisaoService: RevisaoService,
@@ -26,11 +26,18 @@ export class CadastroRevisaoComponent {
   }  
 
   cadastrarRevisao() {
+    // Verificar se algum dos campos está vazio
+    if (!this.revisao.placa || !this.revisao.tipoRevisao || !this.revisao.detalhesRevisao) {
+      this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
+      return;
+    }
+  
+    // Se todos os campos estiverem preenchidos, prosseguir com o cadastro
     this.revisaoService.cadastrarRevisao(this.revisao).subscribe(
       (response: any) => {
         console.log('Revisão cadastrada com sucesso:', response);
         alert('Revisão cadastrada com sucesso.');
-
+  
         // Enviar mensagem ao cliente após cadastro da revisão
         this.enviarMensagemAposCadastro(this.revisao.placa);
       },
@@ -38,7 +45,7 @@ export class CadastroRevisaoComponent {
         console.error('Erro ao cadastrar revisão:', error);
       }
     );
-  } 
+  }  
 
   enviarMensagemAposCadastro(placa: string) {
     this.revisaoService.getRevisaoDetalhada(placa).subscribe(

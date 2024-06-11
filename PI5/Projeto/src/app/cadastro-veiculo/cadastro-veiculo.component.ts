@@ -6,12 +6,12 @@ import { VeiculoService } from '../veiculo.service';
 @Component({
   selector: 'app-cadastro-veiculo',
   templateUrl: './cadastro-veiculo.component.html',
-  styleUrl: './cadastro-veiculo.component.css'
+  styleUrls: ['./cadastro-veiculo.component.css']
 })
 export class CadastroVeiculoComponent implements OnInit {
 
   cliente = {
-    nome:'',
+    nome: '',
     cpf: ''
   };
 
@@ -20,13 +20,12 @@ export class CadastroVeiculoComponent implements OnInit {
     placa: '',
     marca: '',
     modelo: '',
-    ano: '',
+    ano: ''
   };
 
+  errorMessage: string = '';
 
-  constructor(private router: Router, private veiculoService: VeiculoService,
-    private http: HttpClient
-  ) {}
+  constructor(private router: Router, private veiculoService: VeiculoService, private http: HttpClient) {}
 
   ngOnInit(): void {
     // Carregar os dados do cliente salvos anteriormente
@@ -38,24 +37,29 @@ export class CadastroVeiculoComponent implements OnInit {
   }
 
   entrarPrincipal(): void {
-
     this.router.navigate(['/tela-principal']);
-  }  
-
+  }
 
   cadastrarVeiculo() {
-    this.veiculo.cpf = this.cliente.cpf;
-    this.veiculoService.cadastrarVeiculo(this.veiculo)
-      .subscribe(
-        response => {
-          console.log('Veiculo cadastrado com sucesso:', response);
-          alert('Veiculo Cadastrado com sucesso.');
-        },
-        error => {
-          console.error('Erro ao cadastrar Veiculo:', error);
-        }
-      );
+    if (this.isFormValid()) {
+      this.veiculo.cpf = this.cliente.cpf;
+      this.veiculoService.cadastrarVeiculo(this.veiculo)
+        .subscribe(
+          response => {
+            console.log('Veículo cadastrado com sucesso:', response);
+            alert('Veículo cadastrado com sucesso.');
+            return this.router.navigate(['/tela-principal']);
+          },
+          error => {
+            console.error('Erro ao cadastrar veículo:', error);
+          }
+        );
+    } else {
+      this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
+    }
+  }
 
-  } 
-
+  isFormValid(): boolean {
+    return this.veiculo.placa !== '' && this.veiculo.marca !== '' && this.veiculo.modelo !== '' && this.veiculo.ano !== '';
+  }
 }

@@ -1,35 +1,67 @@
 <div class="main">
-
-    <div class="formulario">
-
-        <div class="iconeVoltar">
-
-            <img (click)="entrarPrincipal()" src="assets/voltarBtn.png" alt="">
-            <h1>CADASTRO DE CLIENTE</h1>
-
-        </div>
-
-        <div style="width: 100%;"><b><label style="margin-left: 10%; font-size: 15px; color: #000080;" for="">NOME</label></b></div>
-        <input [(ngModel)]="cliente.nome" type="text" placeholder="Matheus de souza" required>
-
-
-
-        <div style="width: 100%;"><b><label style="margin-left: 10%; font-size: 15px; color: #000080;" for="">CPF</label></b></div>
-        <input [(ngModel)]="cliente.cpf" type="number" placeholder="00000000000" required>
-
-
-
-        
-        <div style="width: 100%;"><b><label style="margin-left: 10%; font-size: 15px; color: #000080;" for="">TELEFONE</label></b></div>
-        <input [(ngModel)]="cliente.telefone" type="number" placeholder="62900000000" required>
-        <div style="width: 100%;"><b><label style="margin-left: 10%; font-size: 15px; color: #000080;" for="">EMAIL</label></b></div>
-        <input [(ngModel)]="cliente.email" type="text" placeholder="ClienteAutoSos@gmail.com">
-
-        <div><button (click)="entrarCadEndereco()" >AVANÇAR</button></div>
-        
-
-
-
+  <div class="formulario">
+    <div class="iconeVoltar">
+      <img (click)="entrarPrincipal()" src="assets/voltarBtn.png" alt="" />
+      <h1>CADASTRO DE CLIENTE</h1>
     </div>
 
+    <div style="width: 100%">
+      <b>
+        <label style="margin-left: 10%; font-size: 15px; color: #000080">NOME</label>
+      </b>
+    </div>
+    <input
+      [(ngModel)]="cliente.nome"
+      type="text"
+      placeholder="Matheus de souza"
+      required
+    />
+
+    <div style="width: 100%">
+      <b>
+        <label style="margin-left: 10%; font-size: 15px; color: #000080">CPF</label>
+      </b>
+    </div>
+    <input
+      [(ngModel)]="cliente.cpf"
+      type="text"
+      placeholder="00000000000"
+      maxlength="11"
+      (input)="validateCpf()"
+      required
+    />
+
+    <div style="width: 100%">
+      <b>
+        <label style="margin-left: 10%; font-size: 15px; color: #000080">TELEFONE</label>
+      </b>
+    </div>
+    <input
+      [(ngModel)]="cliente.telefone"
+      type="text"
+      maxlength="11"
+      placeholder="62900000000"
+      required
+    />
+    
+    <div style="width: 100%">
+      <b>
+        <label style="margin-left: 10%; font-size: 15px; color: #000080">EMAIL</label>
+      </b>
+    </div>
+    <input
+      [(ngModel)]="cliente.email"
+      type="text"
+      placeholder="ClienteAutoSos@gmail.com"
+      required
+    />
+
+    <div>
+      <button (click)="entrarCadEndereco()">AVANÇAR</button>
+    </div>
+
+    <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
+      {{ errorMessage }}
+    </div>
+  </div>
 </div>
