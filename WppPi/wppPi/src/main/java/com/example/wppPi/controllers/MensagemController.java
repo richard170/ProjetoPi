@@ -29,7 +29,7 @@ public class MensagemController {
         HttpResponse<JsonNode> response = Unirest.post("https://api.wzap.chat/v1/numbers/exists")
                 .header("Content-Type", "application/json")
                 .header("Token", "5cb988982d7f23236d1ec54a58fd93b07daef944f099f828219979bcb1dfb2f7f96ed121862c671e")
-                .body("{\"phone\":\"" + mensagem.getNumero() + "\"}")
+                .body("{\"phone\":\"+55" + mensagem.getNumero() + "\"}")
                 .asJson();
 
         // Verificar se o objeto JSON contém a chave "exists"
@@ -42,7 +42,7 @@ public class MensagemController {
                 HttpResponse<String> responseSend = Unirest.post("https://api.wzap.chat/v1/messages")
                         .header("Content-Type", "application/json")
                         .header("Token", "5cb988982d7f23236d1ec54a58fd93b07daef944f099f828219979bcb1dfb2f7f96ed121862c671e")
-                        .body("{\"phone\":\"" + mensagem.getNumero() + "\",\"message\":\"" + mensagem.getMensagem() + "\"}")
+                        .body("{\"phone\":\"+55" + mensagem.getNumero() + "\",\"message\":\"*Assistente Auto SOS*\\n\\n" + mensagem.getMensagem() + "\"}")
                         .asString();
                 System.out.println("Mensagem enviada com sucesso");
             } else {

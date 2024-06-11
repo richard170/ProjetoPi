@@ -7,6 +7,15 @@
   height: 100vh;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 h1 {
   margin: 30px;
   background-color: #000080;
@@ -56,6 +65,8 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .info-column{

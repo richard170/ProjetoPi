@@ -43,7 +43,7 @@
               class="card-body"
             >
               <!-- Informações do veículo -->
-              <div class="revi">
+              <div  class="revi">
                 <p><strong>Placa:</strong> {{ placa }}</p>
                 <p>
                   <strong>Tipo Revisão:</strong>
@@ -58,11 +58,46 @@
                       "Não encontrado"
                   }}
                 </p>
+                <select
+                  class="custom-select"
+                  (change)="enviarStatus(placa, $event)"                  
+                >
+                  <option value=" *Aguardando*">Aguardando</option>
+                  <option value=" *Andamento* 🔧">Andamento</option>
+                  <option value=" *Teste de Estrada* 🚗">
+                    Teste de Estrada
+                  </option>
+                  <option value=" *Diagnóstico* 📊">Diagnóstico</option>
+                  <option value=" *Desmontagem* 🔩">Desmontagem</option>
+                  <option value=" *Montagem* 🔧">Montagem</option>
+                  <option value=" *Concluido* ✅">Concluído</option>
+                  <option value=" *Lavagem* 🚿">Lavagem</option>
+                  <option value=" *Pintura* 🎨">Pintura</option>
+                  <option value=" *Alinhamento* 📏">Alinhamento</option>
+                  <option value=" *Balanceamento* ⚖️">Balanceamento</option>
+                  <option value=" *Troca de Óleo* 🛢️">Troca de Óleo</option>
+                  <option value=" *Revisão Geral* 🔍">Revisão Geral</option>
+                  <option value=" *Troca de Pneus* 🚗">Troca de Pneus</option>
+                  <option value=" *Troca de Bateria* 🔋">
+                    Troca de Bateria
+                  </option>
+                  <option value=" *Freios* 🚦">Freios</option>
+                  <option value=" *Suspensão* 🛠️">Suspensão</option>
+                  <option value=" *Elétrica* 💡">Elétrica</option>
+                  <option value=" *Motor* ⚙️">Motor</option>
+                  <option value=" *Transmissão* 🔧">Transmissão</option>
+                  <option value=" *Limpeza Interna* 🧽">Limpeza Interna</option>
+                  <option value=" *Polimento* ✨">Polimento</option>
+                  <option value=" *Inspeção* 🕵️">Inspeção</option>
+                  <option value=" *Revisão de Segurança* 🛡️">
+                    Revisão de Segurança
+                  </option>
+                </select>
                 <textarea
                   style="border-radius: 5px"
                   [ngModel]="revisoesDetalhadas[placa]?.orcamento"
                   (ngModelChange)="updateOrcamento($event, placa)"
-                  placeholder="Orçamento"
+                  placeholder="Diagnóstico e orçamento"
                 ></textarea>
                 <div class="button-container">
                   <button
@@ -73,9 +108,31 @@
                       )
                     "
                   >
-                    Salvar
+                    Enviar Mensagem
                   </button>
                 </div>
+              </div>
+
+              <!-- Informações do veículo -->
+              <div class="info-column">
+                <p>
+                  <strong>Marca Veículo:</strong>
+                  {{
+                    revisoesDetalhadas[placa]?.marcaVeiculo || "Não encontrado"
+                  }}
+                </p>
+                <p>
+                  <strong>Modelo Veículo:</strong>
+                  {{
+                    revisoesDetalhadas[placa]?.modeloVeiculo || "Não encontrado"
+                  }}
+                </p>
+                <p>
+                  <strong>Ano Veículo:</strong>
+                  {{
+                    revisoesDetalhadas[placa]?.anoVeiculo || "Não encontrado"
+                  }}
+                </p>
               </div>
 
               <!-- Informações do cliente -->
@@ -107,42 +164,11 @@
                 </p>
               </div>
 
-              <!-- Informações do veículo -->
-              <div class="info-column">
-                <p>
-                  <strong>Marca Veículo:</strong>
-                  {{
-                    revisoesDetalhadas[placa]?.marcaVeiculo || "Não encontrado"
-                  }}
-                </p>
-                <p>
-                  <strong>Modelo Veículo:</strong>
-                  {{
-                    revisoesDetalhadas[placa]?.modeloVeiculo || "Não encontrado"
-                  }}
-                </p>
-                <p>
-                  <strong>Ano Veículo:</strong>
-                  {{
-                    revisoesDetalhadas[placa]?.anoVeiculo || "Não encontrado"
-                  }}
-                </p>
-              </div>
+              
 
               <!-- Ações -->
               <div class="actions">
-                <select
-                  class="custom-select"
-                  (change)="enviarStatus(placa, $event)"
-                >
-                  <option value="Aguardando">Aguardando</option>
-                  <option value=" Andamento 🔧">Andamento</option>
-                  <option value=" Concluido ✅">Concluído</option>
-                </select>
-                <button
-                  (click)="concluirRevisao(placa)"
-                  class="custom-button"
-                >
+                <button (click)="concluirRevisao(placa)" class="custom-button">
                   CONCLUIR REVISÃO
                 </button>
               </div>

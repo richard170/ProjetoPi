@@ -6,34 +6,57 @@ import { RevisaoService } from '../revisao.service';
 @Component({
   selector: 'app-exibir-revisoes',
   templateUrl: './exibir-revisoes.component.html',
-  styleUrls: ['./exibir-revisoes.component.css']
+  styleUrls: ['./exibir-revisoes.component.css'],
 })
 export class ExibirRevisoesComponent implements OnInit {
-
   revisoesDetalhadas: { [placa: string]: any } = {};
   placasRevisoes: any[] = [];
   listaPlacas: string[] = [];
-  cardColors: string[] = ['light-yellow', 'light-blue', 'light-green', 'light-pink', 'light-purple', 'light-purple1', 'light-purple2', 'light-purple3', 'light-purple4', 'light-purple5',
-                          'light-purple6', 'light-purple7', 'light-purple8', 'light-purple9', 'light-purple10', 'light-purple11', 'light-purple12', 'light-purple13', 'light-purple14', 'light-purple15'];
+  cardColors: string[] = [
+    'light-yellow',
+    'light-blue',
+    'light-green',
+    'light-pink',
+    'light-purple',
+    'light-purple1',
+    'light-purple2',
+    'light-purple3',
+    'light-purple4',
+    'light-purple5',
+    'light-purple6',
+    'light-purple7',
+    'light-purple8',
+    'light-purple9',
+    'light-purple10',
+    'light-purple11',
+    'light-purple12',
+    'light-purple13',
+    'light-purple14',
+    'light-purple15',
+  ];
   cardColorMap: { [key: string]: string } = {};
 
-  constructor(private router: Router, private revisaoService: RevisaoService, private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private revisaoService: RevisaoService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.placaParaLista();
   }
 
   carregarDetalhesRevisoes() {
-    this.listaPlacas.forEach(placa => {
+    this.listaPlacas.forEach((placa) => {
       this.loadRevisaoDetalhada(placa);
     });
   }
 
   placaParaLista() {
-    this.revisaoService.placaParaLista().subscribe(placas => {
+    this.revisaoService.placaParaLista().subscribe((placas) => {
       this.placasRevisoes = placas;
       console.log('Placas das revisões:', this.placasRevisoes);
-      this.listaPlacas = this.placasRevisoes.map(revisao => revisao.placa);
+      this.listaPlacas = this.placasRevisoes.map((revisao) => revisao.placa);
       console.log('Lista de placas:', this.listaPlacas);
 
       this.carregarDetalhesRevisoes();
@@ -43,18 +66,24 @@ export class ExibirRevisoesComponent implements OnInit {
 
   loadRevisaoDetalhada(placa: string) {
     console.log('Carregando detalhes da revisão para placa:', placa);
-    this.revisaoService.getRevisaoDetalhada(placa).subscribe(data => {
-      console.log('Detalhes da revisão carregados para placa', placa, ':', data);
+    this.revisaoService.getRevisaoDetalhada(placa).subscribe((data) => {
+      console.log(
+        'Detalhes da revisão carregados para placa',
+        placa,
+        ':',
+        data
+      );
       this.revisoesDetalhadas[placa] = data;
     });
   }
 
   shuffle(array: any[]): any[] {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
 
     // Enquanto ainda houver elementos para embaralhar...
     while (0 !== currentIndex) {
-
       // Pegue um elemento restante...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -71,7 +100,8 @@ export class ExibirRevisoesComponent implements OnInit {
   assignRandomColors(): void {
     this.cardColors = this.shuffle(this.cardColors); // Embaralha as cores
     this.listaPlacas.forEach((placa, index) => {
-      this.cardColorMap[placa] = this.cardColors[index % this.cardColors.length];
+      this.cardColorMap[placa] =
+        this.cardColors[index % this.cardColors.length];
     });
   }
 
@@ -80,7 +110,7 @@ export class ExibirRevisoesComponent implements OnInit {
   }
 
   salvarOrcamento(placa: string, novoOrcamento: string) {
-    const revisao = this.placasRevisoes.find(rev => rev.placa === placa);
+    const revisao = this.placasRevisoes.find((rev) => rev.placa === placa);
     if (revisao) {
       const telefoneCliente = this.revisoesDetalhadas[placa]?.telefoneCliente;
       const id = revisao.id;
@@ -89,14 +119,17 @@ export class ExibirRevisoesComponent implements OnInit {
         placa: placa,
         tipoRevisao: this.revisoesDetalhadas[placa]?.tipoRevisao,
         detalhesRevisao: this.revisoesDetalhadas[placa]?.detalhesRevisao,
-        orcamento: novoOrcamento
+        orcamento: novoOrcamento,
       };
       this.atualizarOrcamento(id, dadosRevisao).subscribe(
-        response => {
+        (response) => {
           console.log('Orçamento atualizado com sucesso:', response);
-          this.enviarMensagem(telefoneCliente, `Orçamento atualizado: ${novoOrcamento}`);
+          this.enviarMensagem(
+            telefoneCliente,
+            `📢 *AUTO SOS NOTIFICA*\\nAtendimento para o veiculo de placa *${placa}*.\\nInformativos: *${novoOrcamento}*`
+          );
         },
-        error => {
+        (error) => {
           console.error('Erro ao atualizar orçamento:', error);
         }
       );
@@ -118,19 +151,22 @@ export class ExibirRevisoesComponent implements OnInit {
     if (telefoneCliente !== 'Não encontrado') {
       const mensagemData = {
         numero: telefoneCliente,
-        mensagem: mensagem
+        mensagem: mensagem,
       };
       const url = 'http://localhost:8081/mensagem/enviar-mensagem';
       this.http.post(url, mensagemData).subscribe(
-        response => {
+        (response) => {
           console.log('Mensagem enviada com sucesso:', response);
         },
-        error => {
+        (error) => {
           console.error('Erro ao enviar mensagem:', error);
         }
       );
     } else {
-      console.error('Número de telefone do cliente não encontrado:', telefoneCliente);
+      console.error(
+        'Número de telefone do cliente não encontrado:',
+        telefoneCliente
+      );
     }
   }
 
@@ -140,7 +176,7 @@ export class ExibirRevisoesComponent implements OnInit {
     const telefoneCliente = this.obterTelefoneCliente(placa);
 
     if (telefoneCliente !== 'Não encontrado') {
-      const mensagem = `📢 Status do veículo atualizado para: ${status}`;
+      const mensagem = `📢 *AUTO SOS NOTIFICA*\\nAtendimento para o veiculo de placa *${placa}*.\\nFoi atualizado para : ${status}`;
       this.enviarMensagem(telefoneCliente, mensagem);
 
       switch (status) {
@@ -158,7 +194,10 @@ export class ExibirRevisoesComponent implements OnInit {
           break;
       }
     } else {
-      console.error('Número de telefone do cliente não encontrado para a placa:', placa);
+      console.error(
+        'Número de telefone do cliente não encontrado para a placa:',
+        placa
+      );
     }
   }
 
@@ -170,7 +209,7 @@ export class ExibirRevisoesComponent implements OnInit {
   }
 
   concluirRevisao(placa: string) {
-    const revisao = this.placasRevisoes.find(rev => rev.placa === placa);
+    const revisao = this.placasRevisoes.find((rev) => rev.placa === placa);
     if (revisao) {
       const id = revisao.id;
       const url = `http://localhost:8080/revisoes/${id}`;
@@ -182,7 +221,7 @@ export class ExibirRevisoesComponent implements OnInit {
             this.router.navigate(['/exibir-revisoes']);
           });
         },
-        error => {
+        (error) => {
           console.error('Erro ao concluir revisão:', error);
         }
       );
@@ -194,6 +233,4 @@ export class ExibirRevisoesComponent implements OnInit {
   entrarExibirRevisoes(): void {
     this.router.navigate(['/exibir-revisoes']);
   }
-
-
 }

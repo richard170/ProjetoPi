@@ -52,7 +52,7 @@ export class CadastroRevisaoComponent {
       (revisaoDetalhada: any) => {
         const telefoneCliente = revisaoDetalhada?.telefoneCliente;
         if (telefoneCliente) {
-          const mensagem = `🚗 AUTO SOS NOTIFICA 🚙 - Sua revisão foi iniciada com sucesso para o veiculo de placa ${placa}. - Atualizaremos o Status de andamento por aqui 🚀 `;
+          const mensagem = `🚗 *AUTO SOS NOTIFICA* 🚙\\nSua revisão foi iniciada com sucesso para o veiculo de placa *${placa}*.\\nAtualizaremos o Status de andamento por aqui 🚀 `;
           this.enviarMensagem(telefoneCliente, mensagem);
         } else {
           console.error('Número de telefone do cliente não encontrado para a placa:', placa);
