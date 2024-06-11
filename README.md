@@ -42,14 +42,14 @@ Siga os passos abaixo para configurar e executar o projeto:
   - Confirme se as credenciais e configurações do banco de dados estão corretas.
 
   ### 2. Erro de porta
-  Identificar e encerrar o processo que está usando a porta 8080:
+  - Identificar e encerrar o processo que está usando a porta 8080:
   Você pode fazer isso usando o comando netstat executando um CMD como administrador para encontrar o ID do processo (PID) que está usando a porta e então encerrá-lo usando o   
   Gerenciador de Tarefas ou o comando taskkill.
 
-    netstat -aon | findstr :8080
-    
-    taskkill /PID [PID encontrado] /F
-  Retire os [ ] e coloque o pid para finalizar a porta 8080
+        netstat -aon | findstr :8080
+        
+        taskkill /PID [PID encontrado] /F
+  - Retire os [ ] e coloque o pid para finalizar a porta 8080
 
 # 4. Requisitos Adicionais
   É necessário ter um banco de dados PostgreSQL instalado e configurado para o funcionamento correto do backend.
