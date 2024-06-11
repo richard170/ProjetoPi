@@ -176,6 +176,7 @@ export class ExibirRevisoesComponent implements OnInit {
     const telefoneCliente = this.obterTelefoneCliente(placa);
 
     if (telefoneCliente !== 'Não encontrado') {
+      alert('Status atualizado com sucesso para a placa: ' + placa);
       const mensagem = `📢 *AUTO SOS NOTIFICA*\\nAtendimento para o veiculo de placa *${placa}*.\\nFoi atualizado para : ${status}`;
       this.enviarMensagem(telefoneCliente, mensagem);
 
@@ -194,6 +195,7 @@ export class ExibirRevisoesComponent implements OnInit {
           break;
       }
     } else {
+      alert('Número de telefone do cliente não encontrado para a placa:');
       console.error(
         'Número de telefone do cliente não encontrado para a placa:',
         placa
