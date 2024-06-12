@@ -23,7 +23,7 @@
       type="text"
       placeholder="PLACA VEÍCULO"
     />
-    <button style="background-color: #9b0025">BUSCAR</button>
+    <button (click)="buscarVeiculo()" style="background-color: #9b0025">BUSCAR</button>
 
     <input [(ngModel)]="veiculo.marca" type="text" placeholder="MARCA" />
     <input [(ngModel)]="veiculo.modelo" type="text" placeholder="MODELO" />

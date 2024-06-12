@@ -37,9 +37,11 @@ export class CadastroRevisaoComponent {
       (response: any) => {
         console.log('Revisão cadastrada com sucesso:', response);
         alert('Revisão cadastrada com sucesso.');
+        
   
         // Enviar mensagem ao cliente após cadastro da revisão
         this.enviarMensagemAposCadastro(this.revisao.placa);
+        return this.router.navigate(['/tela-principal']);
       },
       (error: any) => {
         console.error('Erro ao cadastrar revisão:', error);

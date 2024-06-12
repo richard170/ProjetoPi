@@ -40,6 +40,29 @@ export class CadastroVeiculoComponent implements OnInit {
     this.router.navigate(['/tela-principal']);
   }
 
+  buscarVeiculo(): void {
+    if (this.veiculo.placa) {
+      const apiUrl = `https://wdapi2.com.br/consulta/${this.veiculo.placa}/9843281519f0580b62427c8f0bb09937`;
+      this.http.get<any>(apiUrl).subscribe(
+        response => {
+          if (response) {
+            this.veiculo.marca = response.marca || '';
+            this.veiculo.modelo = response.modelo || '';
+            this.veiculo.ano = response.ano || '';
+          } else {
+            this.errorMessage = 'Veículo não encontrado.';
+          }
+        },
+        error => {
+          console.error('Erro ao buscar veículo:', error);
+          this.errorMessage = 'Erro ao buscar veículo. Tente novamente mais tarde.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Por favor, insira a placa do veículo.';
+    }
+  }
+
   cadastrarVeiculo() {
     if (this.isFormValid()) {
       this.veiculo.cpf = this.cliente.cpf;
@@ -52,6 +75,7 @@ export class CadastroVeiculoComponent implements OnInit {
           },
           error => {
             console.error('Erro ao cadastrar veículo:', error);
+            this.errorMessage = 'Erro ao cadastrar veículo. Tente novamente mais tarde.';
           }
         );
     } else {
