@@ -17,45 +17,39 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.pi5.modelos.ClienteModel;
 import com.example.pi5.serviços.ClienteService;
 
-
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-    
-@Autowired
-ClienteService clienteService;
 
- @PostMapping
+    @Autowired
+    ClienteService clienteService;
+
+    @PostMapping
     public void cadastrarCliente(@RequestBody ClienteModel clienteModel) {
-            clienteService.cadastrarCliente(clienteModel);
+        clienteService.cadastrarCliente(clienteModel);
 
     }
-
 
     @GetMapping
     public List<ClienteModel> buscarClientes() {
         return clienteService.buscarClientes();
     }
 
-
     @GetMapping("/{idCliente}")
     public ClienteModel buscarClienteId(@PathVariable Integer idCliente) {
-    return clienteService.buscarClientePorId(idCliente);
+        return clienteService.buscarClientePorId(idCliente);
     }
-    
+
     @PutMapping("/{idCliente}")
-    public ResponseEntity<Object> atualizarPorCliente(@PathVariable Integer idCliente, @RequestBody ClienteModel clienteModel) {
-            return clienteService.atualizarPorId(idCliente, clienteModel);
+    public ResponseEntity<Object> atualizarPorCliente(@PathVariable Integer idCliente,
+            @RequestBody ClienteModel clienteModel) {
+        return clienteService.atualizarPorId(idCliente, clienteModel);
     }
-
-
 
     @DeleteMapping("/{idCliente}")
-    public void deletarClientePorId(@PathVariable Integer idCliente){
+    public void deletarClientePorId(@PathVariable Integer idCliente) {
         clienteService.deletarPorId(idCliente);
     }
-
 
 }
