@@ -60,8 +60,8 @@ Siga os passos abaixo para configurar e executar o projeto:
     http://localhost:4200/tela-login
   - usuario:
     
-        123
+        admin
 
   - senha:
     
-        123
+        admin
